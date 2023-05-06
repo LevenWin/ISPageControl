@@ -161,7 +161,7 @@ private extension ISPageControl {
         dotLayers.enumerated().filter{ $0.offset != centerIndex }.forEach {
             let index = abs($0.offset - centerIndex)
             let interval = $0.offset > centerIndex ? diameter + padding : -(diameter + padding)
-            $0.element.position = CGPoint(x: centerLayer.position.x + interval * CGFloat(index), y: $0.element.position.y)
+            $0.element.position = CGPoint(x: centerLayer.position.x + interval * CGFloat(index), y: centerLayer.position.y)
         }
     }
     
@@ -194,6 +194,7 @@ private extension ISPageControl {
         }
         
         guard numberOfPages > limit else {
+            self.updateDotLayersLayout()
             return
         }
         
